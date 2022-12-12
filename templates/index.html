@@ -1,0 +1,38 @@
+
+<html>
+    <head>
+        <title>Grades</title>
+        <link rel="stylesheet" href="mysheet.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src = functions.js></script>        
+    </head>
+    <body>
+        <script>
+        //allGrades = document.body.innerHTML;
+        document.getElementById("showAll");
+        </script>
+        <label for="Name">Username:</label>
+        <input type="text" id="username" name="username" placeholder= "username">
+
+        <label><input type="checkbox" id="animeCheckbox" value="value">Anime Tag </label>
+        <label><input type="checkbox" id="gamesCheckbox" value="value">Games Tag</label>
+        <input type="text" id="forumText" name="forumText" placeholder="Forum text contents here">
+        <input type="text" id="forumReply" name="forumReply" placeholder="Forum reply contents here">
+        <button class = "postComment"> Post Comment</button>
+        <input type="text" id="threadID" name="threadID" placeholder="What thread?">
+        <button class = "postReply"> Post Reply</button>
+
+
+        <input type="text" id="postID" name="postID" placeholder="What post id?">        
+        <button class = "upvote"> Upvote a post</button>
+
+        <p id = "GradeDisplay"></p>
+        <table id = "gradeTable">
+            <tr>
+                <th>Student name</th>
+                <th> Grade </th>
+            </tr>
+            
+        </table>
+    </body>
+</html>

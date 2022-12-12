@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet"  href="{{ url_for('static', filename='Home_Style.css')}}">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <div id = "HEADER">
+        <header>
+            Universitoria
+        </header>
+        <h1>{{info}}</h1>
+    </div>
+    <div id="parent">
+        <div id="left">left
+            <button  onclick="Fill()">Tags</button>
+            <ul id ="tContent">
+                <li>All Posts</li>
+            </ul>
+        </div>
+        <div id="right">Content right
+
+            <table id ="rright">
+               <tbody>
+
+               </tbody>
+            </table>
+            <ol>
+
+            </ol>
+        </div>
+        <div id="rightFooter">height: 70px rightFooter</div>
+    </div>
+</body>
+ <script src ="{{ url_for('static', filename='functions.js')}}"></script>
+</html>

@@ -1,0 +1,70 @@
+
+header {
+  font-size: 70px;
+  font-style: bold;
+  text-align: center;
+}
+
+#space {
+  width: 300px;
+  height: 200px;
+  background-color: rgb(199, 192, 99);
+  border-style: solid;
+  border-color: darkblue;
+  margin: 0 auto;
+}
+
+.txtf {
+  height: 100px;
+  font-size: 30pt;
+
+  width: 200px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+#username {
+  font-size: large;
+  width: 95%
+}
+
+#pass {
+  font-size: large;
+  width: 95%;
+}
+
+input {
+  display: block;
+}
+
+label {
+  display: block;
+}
+
+#button{
+
+  font-size: 35px;
+  align-self: center;
+  width: 100%;
+  background-color: rgb(77, 151, 236);
+  border-radius: 8px;
+  border: none;
+}
+
+button {
+  font-size: 35px;
+  align-self: center;
+  width: 100%;
+  background-color: rgb(77, 151, 236);
+  border-radius: 8px;
+  border: none;
+}
+
+#button:hover {
+  background-color: rgb(206, 206, 255);
+}
+
+
+body {
+  background-color: rgb(138, 173, 204);
+}

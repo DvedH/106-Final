@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>Log in</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Register_Style.css')}}">
+
+</head>
+
+<body>
+    <header>
+        Universitoria
+    </header>
+
+    <div id="space">
+        <div id="overall">
+            <form action="/register" method="POST">
+                <div id="usrnm" class="txtf">
+                    <label class="label">Full Name</label>
+                    <input id="real" type="text" name="fname" placeholder="Full Name">
+                </div>
+
+                <div class="txtf">
+                    <label class="label">Username</label>
+                    <input id="username" type="text" name="usn" placeholder="Username">
+                </div>
+
+                <div id="psw" class="txtf">
+                    <label>
+                        Password
+                    </label>
+                    <input id="pass" type="password" name="psw">
+                </div>
+                <div>
+                    <input id="button" type="submit" value="Register">
+                </div>
+            </form>
+            <br>
+            <form action="/loginRedirect" method="GET">
+                <div>
+                    <input id="goLog" type="submit" value="I already have an account">
+                </div>
+            </form>
+        </div>
+        <h1>{{info}}</h1>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>Log in</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Login_Style.css')}}">
+
+</head>
+
+<body>
+    <header>
+        Universitoria
+    </header>
+
+    <div id="space">
+        <div id="overall">
+            <form action="/login" method="POST">
+                <div id="usrnm" class="txtf">
+                    <label class="label">Username</label>
+                    <input id="username" type="text" name="usn" placeholder="Username">
+                </div>
+
+                <div id="psw" class="txtf">
+                    <label>
+                        Password
+                    </label>
+                    <input id="pass" type="password" name="psw">
+                </div>
+
+                <div>
+                    <input id="button" type="submit" value="Login">
+                </div>
+            </form>
+            <br>
+            <form action="/registerRedirect" method="GET">
+                <div>
+                    <input id="goReg" type="submit" value="Register">
+                </div>
+            </form>
+        </div>
+        <h1>{{info}}</h1>
+    </div>
+
+</body>
+
+</html>
