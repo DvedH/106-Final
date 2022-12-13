@@ -3,7 +3,7 @@
 
 from flask import Flask
 from flask import request
-from flask import abort, render_template, redirect
+from flask import abort, render_template, redirect, session
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
@@ -83,6 +83,7 @@ with app.app_context():
         if not user:
             return render_template('login.html', info="wrong Username")
         if bcrypt.checkpw(pswd.encode('utf-8'), user.password):
+            session["user"] = name
             return redirect('/homePage')
         else:
             return render_template('login.html', info="wrong Password")
@@ -127,7 +128,8 @@ with app.app_context():
 
     @app.route('/homePage')
     def homePage():
-        return render_template('HomePage.html')
+        username = session["user"]
+        return render_template('HomePage.html', name=username)
 
 
     @app.route('/FillTags', methods=["GET"])
@@ -142,7 +144,7 @@ with app.app_context():
             tags[r] = {}
             tags[r]["tag"] = result[r].tag
 
-        print(tags)
+        print(session["user"])
         return tags
     #USER FUNCTIONS
 
@@ -167,20 +169,41 @@ with app.app_context():
         return ""
 
     #Show all posts.
-    @app.route('/showPosts', methods = ['GET'])
-    def getPosts():
+    @app.route('/showPosts/<string:tag>', methods=['POST'])
+    def getPosts(tag):
+
+        results = ForumPost.query.all()
+        counter = 0;
+        posts = {}
+        print(tag)
+        taggedPosts = {}
+        #for k in results:
+         #   counter += 1
+
+        for h in results:
+            if h.tag == tag:
+                counter += 1
+                posts[counter] = h.text
+
+        print(posts)
+
+        '''
         animeURL = request.url
         print(animeURL)
+
         parsed_animeURL = urlparse(animeURL)
         query_string = parsed_animeURL.query
         query_var = parse_qs(query_string)
         print(query_var)
-        if ("tag" in query_var  ):
+        print("printed query_var")
+
+        if ("tags" in query_var):
             taggedPost = query_var["tag"]
         else:
             taggedPost = ""
 
         print(taggedPost)
+        print("tagged post")
 
         allPosts = ForumPost.query.all()
         tag_var = taggedPost.pop()
@@ -188,7 +211,8 @@ with app.app_context():
         for i in allPosts:
             if (tag_var == "" or tag_var in i.tag):
                 posts[i.id] = i.text
-
+        print (posts)
+        return posts'''
         return posts
 
 
@@ -199,6 +223,8 @@ with app.app_context():
         posts = {}
         for i in queuedPosts:
             posts[i.id] = i.text
+            print (i.id)
+            print(i)
 
         print(posts)
         return posts
