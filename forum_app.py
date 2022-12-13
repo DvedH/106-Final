@@ -121,6 +121,30 @@ with app.app_context():
         return render_template("/login.html")
 
 
+    @app.route('/LookAtThread', methods=['POST'])
+    def discussion():
+        result = ForumPost.query.all()
+        search = request.get_data().decode('UTF-8')
+        print(search)
+        find = {}
+        counter = 0
+        c = 0;
+        for i in result:
+            counter += 1
+
+        for h in result:
+            if search in h.text:
+                c += 1
+                usrname = h.userID
+                time = h.time
+                tags= h.tag
+
+        print(usrname)
+        print(time)
+        print(tags)
+
+        return render_template("Thread.html")
+
     @app.route('/registerRedirect', methods=['GET'])
     def rRedir():
         return render_template("/register.html")
@@ -154,6 +178,7 @@ with app.app_context():
     def PostOnForum(username):
         #Query all users & content from the post method.
         contents = request.get_json(silent=True)
+        print(contents)
         userPost = Users.query.all()
         #Find if this is a valid user so they can post.
         result = db.session.execute(db.select(Users.userID).where(Users.userID == username))
@@ -176,12 +201,9 @@ with app.app_context():
         counter = 0;
         posts = {}
         print(tag)
-        taggedPosts = {}
-        #for k in results:
-         #   counter += 1
 
         for h in results:
-            if h.tag == tag:
+            if tag in h.tag:
                 counter += 1
                 posts[counter] = h.text
 
