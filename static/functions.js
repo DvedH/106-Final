@@ -11,11 +11,38 @@
     $("ul").on("click", "li", function() {
         num = Math.floor(Math.random() * 3);
         console.log(num);
-        res = fetch('http://127.0.0.1:5000/showAllPosts', {
-            method: 'GET'
-        })
-        .then((response) => response.json())
-        .then((data) => ShowPosts(data))
+        console.log( $( this ).text() )
+        meth = $( this ).text();
+        if (meth == "All Posts") {
+            res = fetch('http://127.0.0.1:5000/showAllPosts', {
+                method: 'GET'
+            })
+            .then((response) => response.json())
+            .then((data) => ShowPosts(data))
+        } else {
+            var urlTag =  window.location.href;
+            cleaner = urlTag;
+            console.log(urlTag)
+            tagcheck = '?tags=' + meth.toLowerCase();
+            tag = meth.toLowerCase();
+            if (!urlTag.includes(tagcheck)) {
+                urlTag += tagcheck;
+            }
+            console.log(urlTag)
+
+            window.history.pushState("data","Title",urlTag);
+            res = fetch('http://127.0.0.1:5000/showPosts/'+tag, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain'
+                },
+                body: urlTag
+            })
+                .then((response) => response.json())
+                .then((data) => ShowPosts(data))
+                window.history.pushState("data","Title",cleaner);
+        }
+
     });
 
     function updateGradebook(data) {
