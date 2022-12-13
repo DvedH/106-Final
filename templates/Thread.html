@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>Profile</title>
+    <link rel="stylesheet"  href="{{ url_for('static', filename='Thread_Style.css')}}">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body>
+    <Header><h1>Mega Web</h1></Header>
+    <div class="thread">
+        <div class="OP">
+            <div class="PostInfo">{{OPUsername}}</div>
+            <p>{{Tags}}{{Time}}</p>
+            <p>{{OpText}}</p>
+
+        </div>
+    </div>
+</body>
+<script src ="{{ url_for('static', filename='functions.js')}}"></script>
+</html>
