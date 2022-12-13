@@ -11,8 +11,8 @@
 <body>
 
     <div id = "HEADER">
-        <header>
-            Universitoria
+        <header style="font-size: 40pt"id="USER" >
+            Welcome to the site {{name}} 😎
         </header>
         <h1>{{info}}</h1>
     </div>
@@ -34,7 +34,14 @@
 
             </ol>
         </div>
-        <div id="rightFooter">height: 70px rightFooter</div>
+        <div id="rightFooter">
+            <textarea id="forumText" name="forumText"  placeholder="Forum text contents here"></textarea>
+            <button class = "postComment"> Post</button>
+            <div id="infoSub"><label>
+                <input type="checkbox" id="animeCheckbox" value="value">Anime</label>
+                <label><input type="checkbox" id="gamesCheckbox" value="value">Games</label>
+            </div>
+        </div>
     </div>
 </body>
  <script src ="{{ url_for('static', filename='functions.js')}}"></script>
